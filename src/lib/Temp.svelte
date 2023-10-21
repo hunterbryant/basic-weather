@@ -1,7 +1,7 @@
 <script lang="ts">
-    let temp = 0;
+	let temp = 0;
 </script>
 
 <p class="text-6xl">
-    {temp}
+	{temp}
 </p>
