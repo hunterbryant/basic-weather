@@ -1,7 +1,7 @@
 <script lang="ts">
-	let temp = 0;
+	export let value: number;
 </script>
 
-<p class="text-6xl">
-	{temp}
+<p class="text-6xl shrink text-center">
+	{value}º
 </p>
