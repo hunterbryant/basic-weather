@@ -20,13 +20,15 @@ export const formattedResponse = derived(apiData, ($apiData) => {
 	return constructorObjectArray;
 });
 
-const formatResponse = (
-  data: any
-): Array<{
+type ForecastData = Array<{
   date: string;
   high: number;
   low: number;
-}> => {
+}>
+
+const formatResponse = (
+  data: any
+): ForecastData => {
   let constructorObjectArray = [];
 
   if (data.daily) {
@@ -48,7 +50,7 @@ function Forecast<T extends any>(fetcher: () => Promise<T>) {
   let { subscribe, set } = writable<T | null>(null);
   return {
     subscribe,
-    fetchData: async () => set(await fetcher()),
+    fetchData: fetcher().then(set),
   };
 }
 
