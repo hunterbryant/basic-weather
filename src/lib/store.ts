@@ -84,6 +84,7 @@ export const latLongForecast = (lat: string, long: string) => {
   })
 }
 
+// Can compose the lower level latLong fetcher to a more general city fetcher
 export const cityFetcher = (cityName: string) => {
   // Replace with function to convert city name to lat long
   // Map approximate longitudes for these cities
@@ -105,7 +106,7 @@ export const cityFetcher = (cityName: string) => {
 
 
 // Multiple city Forecasts can be saved in an object (for fetching + getting)
-// This general structure can be stored in local storage for 'saving' cities
+// This general structure can also be stored in local storage for 'saving' cities
 const cities = {
   "New York": cityFetcher("New York"),
   "Los Angeles": cityFetcher("Los Angeles"),
