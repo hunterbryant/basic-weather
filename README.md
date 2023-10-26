@@ -1,5 +1,7 @@
 # Basic Weather
 
+Weather forecasting provided by open-meteo.com
+
 ### Built with the Svelte + TS + Vite setup
 
 This template should help get you started developing with Svelte and TypeScript in Vite.

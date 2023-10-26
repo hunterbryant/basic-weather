@@ -3,8 +3,10 @@
 	import Temp from './lib/Temp.svelte';
 	import LocField from './lib/LocField.svelte';
 
+	let location = 'New York';
+
 	let exampleForecastObject: Array<{
-		date: String;
+		date: string;
 		high: number;
 		low: number;
 	}> = [
@@ -23,9 +25,9 @@
 <main
 	class="container mx-auto flex flex-col justify-center gap-10 content-center w-screen h-screen"
 >
-	<h1 class="text-xl not-italic">New York</h1>
+	<h1 class="text-xl not-italic">{location}</h1>
 
-	<LocField />
+	<LocField bind:value={location} />
 
 	<table class="flex flex-row justify-self-stretch justify-between">
 		{#each exampleForecastObject as day, i}
