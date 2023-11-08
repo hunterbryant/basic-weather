@@ -1,6 +1,11 @@
 import { writable, derived } from 'svelte/store';
 
-export let apiData = writable<{ daily: any }>();
+export const apiData = writable<{ daily: any }>();
+export const location = writable<{
+	name: string;
+	lat: number;
+	lon: number;
+}>();
 
 export const formattedResponse = derived(apiData, ($apiData) => {
 	type WeatherObject = {

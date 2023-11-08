@@ -14,7 +14,7 @@
 		low: number;
 	}> = [];
 
-	let weekday: Array<string> = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+	const weekday: Array<string> = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
 	onMount(async () => {
 		const response = await fetch(
