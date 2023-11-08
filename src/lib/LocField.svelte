@@ -16,8 +16,8 @@
 			if (!firstCity) {
 				location.set({
 					name: value,
-					lat: undefined,
-					lon: undefined,
+					lat: 0,
+					lon: 0,
 					error: `Coun't find location ${value}...`,
 				});
 				throw new Error('The api reponse couldnt match the city');

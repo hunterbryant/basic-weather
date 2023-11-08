@@ -27,12 +27,10 @@
 	<LocField />
 
 	<table class="flex flex-row justify-self-stretch justify-between">
-		{#if !forecast.length}
-			{#if $location.error}
-				<p class="text-red-500">{$location.error}</p>
-			{:else}
-				<Spinner />
-			{/if}
+		{#if $location.error}
+			<p class="text-red-500">{$location.error}</p>
+		{:else if !forecast.length}
+			<Spinner />
 		{:else}
 			{#each forecast as day, i}
 				<tr class="flex flex-col justify-center">
