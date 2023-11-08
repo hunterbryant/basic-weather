@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { location } from './store';
+	import { location, apiData } from './store';
 
 	export let value: string = '';
 
 	async function validateLocation() {
 		try {
+			apiData.set({ daily: '' });
+
 			const response = await fetch(
 				`https://geocode.maps.co/search?q={${value}}`
 			);
@@ -12,6 +14,12 @@
 			const firstCity = (await response.json())[0];
 
 			if (!firstCity) {
+				location.set({
+					name: value,
+					lat: undefined,
+					lon: undefined,
+					error: `Coun't find location ${value}...`,
+				});
 				throw new Error('The api reponse couldnt match the city');
 			}
 
@@ -19,6 +27,7 @@
 				name: firstCity.display_name,
 				lat: firstCity.lat,
 				lon: firstCity.lon,
+				error: undefined,
 			});
 		} catch (error) {
 			console.log(error);

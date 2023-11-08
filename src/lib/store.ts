@@ -6,6 +6,7 @@ export const location = writable<{
 	name: string;
 	lat: number;
 	lon: number;
+	error?: string;
 }>({ name: 'New York', lat: 40.7143, lon: -74.006 });
 
 location.subscribe(async ($location) => {
