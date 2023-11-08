@@ -1,9 +1,15 @@
 import { writable, derived } from 'svelte/store';
 
-export let apiData = writable({});
+export let apiData = writable<{ daily: any }>();
 
 export const formattedResponse = derived(apiData, ($apiData) => {
-	let constructorObjectArray = [];
+	type WeatherObject = {
+		date: string;
+		high: number;
+		low: number;
+	};
+
+	let constructorObjectArray: WeatherObject[] = [];
 
 	if ($apiData.daily) {
 		let length = $apiData.daily.time.length;
