@@ -15,8 +15,6 @@
 				throw new Error('The api reponse couldnt match the city');
 			}
 
-			console.log(firstCity);
-
 			location.set({
 				name: firstCity.display_name,
 				lat: firstCity.lat,

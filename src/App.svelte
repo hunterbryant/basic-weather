@@ -4,15 +4,22 @@
 	import { get } from 'svelte/store';
 	import Temp from './lib/Temp.svelte';
 	import LocField from './lib/LocField.svelte';
-	import { apiData, formattedResponse } from './lib/store';
+	import { location, apiData, formattedResponse } from './lib/store';
 
-	let location = 'New York';
+	let currentLocation: string;
+	location.subscribe((data) => {
+		currentLocation = data.name;
+	});
 
 	let forecast: Array<{
 		date: string;
 		high: number;
 		low: number;
 	}> = [];
+
+	formattedResponse.subscribe(($formattedResponse) => {
+		forecast = $formattedResponse;
+	});
 
 	const weekday: Array<string> = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -28,9 +35,9 @@
 <main
 	class="container mx-auto flex flex-col justify-center gap-10 content-center w-screen h-screen"
 >
-	<h1 class="text-xl not-italic">{location}</h1>
+	<h1 class="text-xl not-italic">{currentLocation}</h1>
 
-	<LocField bind:value={location} />
+	<LocField />
 
 	<table class="flex flex-row justify-self-stretch justify-between">
 		{#each forecast as day, i}
